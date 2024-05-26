@@ -29,7 +29,7 @@ public class GameController {
             }
 
             if (game.isMine(c)) {
-                game.setCellLabel(c, Game.MINE_LABEL);
+                game.revealAllMines();  // Reveal all mines when a mine is hit
                 view.render(game);
                 view.showMessage("You hit a mine! Game over.");
                 break;

@@ -15,6 +15,7 @@ public class Game {
 
     public static final String UNREVEALED_LABEL = "?";
     public static final String MINE_LABEL = "*";
+ 
     public static final String NO_NEIGHBORS_LABEL = " ";
 
     public Game(int width, int height, int bombs) {
@@ -98,6 +99,16 @@ public class Game {
         return mineGrid[c.x][c.y];
     }
 
+    public void revealAllMines() {
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                if (mineGrid[row][col]) {
+                    board[row][col] = MINE_LABEL;
+                }
+            }
+        }
+    }
+    
     public String getCellLabel(Coordinate c) {
         return board[c.x][c.y];
     }
@@ -129,6 +140,7 @@ public class Game {
         }
         return revealedCount == (this.height * this.width) - 8;
     }
+    
 
     public String[][] getBoard() {
         return board;
